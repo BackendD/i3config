@@ -1,0 +1,79 @@
+# -- Conky settings -- #
+background no
+update_interval 1
+ 
+cpu_avg_samples 2
+net_avg_samples 2
+ 
+override_utf8_locale yes
+ 
+double_buffer yes
+no_buffers yes
+ 
+text_buffer_size 2048
+imlib_cache_size 0
+ 
+# -- Window specifications -- #
+ 
+own_window yes
+own_window_class Conky
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+ 
+border_inner_margin 0
+border_outer_margin 0
+ 
+minimum_size 1024 300
+maximum_width 1024
+ 
+alignment top_right
+gap_x -280
+gap_y 50
+ 
+# -- Graphics settings -- #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+ 
+# -- Text settings -- #
+use_xft yes
+xftfont Santana:size=18
+xftalpha 0.8
+ 
+uppercase no
+ 
+default_color FFFFFF
+ 
+# -- Lua Load -- #
+lua_load ./clock_rings.lua
+lua_draw_hook_pre clock_rings
+ 
+TEXT
+   ${font Santana:size=12}${color 66AB22} Root  ${color}${fs_used /}/${fs_size /}${color 79C62C}     Raid0  ${color}${fs_used /media/fhc/c1295494-95c3-4f61-997b-136f46262ceb}/${fs_size /media/fhc/c1295494-95c3-4f61-997b-136f46262ceb}			${color 79C62C}[FHC]${color}			$font
+${voffset -22}${color 79C62C}${goto 10}${hr}${color}
+${voffset 90}${goto 112}${color ffffff}${font Santana:size=26}${time %H:%M}${voffset -9}${font Santana:size=12}    ${time %p}${font}
+${voffset -22}${goto 224}${color 79C62C}${hr 2}
+${voffset -72}${goto 278}${cpugraph 50,285 79C62C ffffff}
+#${voffset -18}${alignr}${execi 60 ~/bin/conky/gmailnotify.sh}     
+${voffset 7}${goto 287}${color 79C62C}${time %A, %d %B %Y}						
+#${font Santana:size=12}${voffset -130}${goto 270}
+${voffset -160}${goto 245}${font Santana:size=12}${color 79C62C}  Uptime: ${color ffffff}$uptime   ${color 79C62C}Networking: ${color ffffff}Up: ${upspeed wlan0} - Down:$color ${downspeed wlan0}
+${voffset -10}${goto 300}${hr}
+${voffset 25}${goto 470}${font Santana:size=12}			Cpu Graph
+
+#${font Santana:size=10}${goto 270}AC adapter: $acpiacadapter
+
+
+${voffset 255}${goto 278}${upspeedgraph wlan0 50,285 79C62C ffffff -t -l}
+${voffset -10}${goto 285}${font caviar dreams:size=10}${color 79C62C}	NetUp	Total ${color FFFFFF}	${totalup wlan0}
+${voffset -32}${goto 278}${color 79C62C}${hr}
+
+${voffset 10}${goto 278}${downspeedgraph wlan0 50,285 79C62C ffffff -t -l}
+${voffset -6}${goto 285}${font caviar dreams:size=10}${color 79C62C}	NetDown	Total ${color FFFFFF}	${totaldown wlan0}
+${voffset -32}${goto 278}${color 79C62C}${hr}
+
+${voffset 10}${goto 430}${font caviar dreams:size=10}Meblourne${font}	${font caviar dreams:size=10}${color FFFFFF}${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ YMML temperature} °C${font}
+${goto 430}${font caviar dreams:size=10}${color 79C62C}Conditions${font}	${font caviar dreams:size=10}${color FFFFFF} ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/ YMML cloud_cover}${font}
+
