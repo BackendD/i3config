@@ -437,7 +437,7 @@ exec --no-startup-id sh -c '/usr/bin/nvidia-settings —load-config-only'
 
 #Support for NVIDIA Prime
 #Shows a tray icon when a compatible NVIDIA Optimus graphics card is detected
-exec --no-startup-id usr/lib/nvidia-prime-applet/nvidia-prime
+exec --no-startup-id /usr/lib/nvidia-prime-applet/nvidia-prime
 
 #Authentication dialog
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -704,8 +704,8 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 #################                          xbacklight                                               #################
 #####################################################################################################################
 
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # decrease screen brightness
 
 
 
